@@ -42,17 +42,20 @@ diag_log ("LOGIN ATTEMPT: " + str(_playerID) + " " + _playerName);
 #endif
 
 //Do Connection Attempt
+//Temp Fix
+_MyPlayerCounter = 1;
+
 _doLoop = 0;
 while {_doLoop < 5} do {
 	_key = format["CHILD:101:%1:%2:%3:",_playerID,dayZ_instance,_playerName];
 	diag_log (_key);
-        _key = format["\cache\players\%1\%2.sqf", MyPlayerCounter, _playerID];
+        _key = format["\cache\players\%1\%2.sqf", _MyPlayerCounter, _playerID];
         diag_log ("LOAD PLAYER: "+_key);
         _res = preprocessFile _key;
         diag_log ("PLAYER CACHE: "+_res);
 
         if ((_res == "") or (isNil "_res")) then {
-            _key = format["\cache\players\%1\%2.sqf", (MyPlayerCounter - 1), _playerID];
+            _key = format["\cache\players\%1\%2.sqf", (_MyPlayerCounter - 1), _playerID];
             diag_log ("BACKLOAD PLAYER: "+_key);
             _res = preprocessFile _key;
             diag_log ("PLAYER CACHE: "+_res);
@@ -70,9 +73,8 @@ while {_doLoop < 5} do {
         };
         _res = nil;
  
-   
-        MyPlayerCounter = MyPlayerCounter + 1;
-        diag_log format["CHILD:11:%1:", MyPlayerCounter];
+        _MyPlayerCounter =  _MyPlayerCounter + 1;
+        diag_log format["CHILD:11:%1:", _MyPlayerCounter];
 
 	if (count _primary > 0) then {
 	    if ((_primary select 0) != "ERROR") then {
