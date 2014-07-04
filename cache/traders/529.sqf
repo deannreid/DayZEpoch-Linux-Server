@@ -1,1 +1,0 @@
-[[5366,["HandGrenade_west",1],17,[4,"ItemGoldBar",1],[2,"ItemGoldBar",1],0,529,"trade_items"],[5367,["PipeBomb",1],10,[4,"ItemGoldBar10oz",1],[2,"ItemGoldBar10oz",1],0,529,"trade_items"],[7190,["1Rnd_HE_M203",1],10,[4,"ItemGoldBar",1],[2,"ItemGoldBar",1],0,529,"trade_items"]]

@@ -1,1 +1,0 @@
-[[6302,["100Rnd_762x51_M240",1],10,[1,"ItemSilverBar10oz",1],[5,"ItemSilverBar",1],0,622,"trade_items"],[6303,["200Rnd_556x45_M249",1],10,[2,"ItemSilverBar10oz",1],[1,"ItemSilverBar10oz",1],0,622,"trade_items"],[6304,["100Rnd_762x54_PK",1],10,[1,"ItemSilverBar10oz",1],[5,"ItemSilverBar",1],0,622,"trade_items"]]
