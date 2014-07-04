@@ -8,14 +8,17 @@ _class = 		_this select 3;
 _allowed = [_object, "Server"] call check_publishobject;
 if (!_allowed) exitWith { deleteVehicle _object; };
 
+//diag_log ("PUBLISH: Attempt " + str(_object));
+
 //get UID
 _uid = _worldspace call dayz_objectUID2;
 
 //Send request
-_key = format["CHILD:308:%1:%2:%3:%4:%5:%6:%7:%8:%9:",dayZ_instance, _class, 0 , _charID, _worldspace, [], [], 0,_uid];
+diag_log format["CHILD:308:%1:%2:%3:%4:%5:%6:%7:%8:%9:",dayZ_instance, _class, 0 , _charID, _worldspace, [], [], 0,_uid];
 
 _object setVariable ["lastUpdate",time];
 _object setVariable ["ObjectUID", _uid,true];
+// _object setVariable ["CharacterID",_charID,true];
 
 if (DZE_GodModeBase) then {
 	_object addEventHandler ["HandleDamage", {false}];
@@ -26,3 +29,5 @@ if (DZE_GodModeBase) then {
 _object enableSimulation false;
 
 PVDZE_serverObjectMonitor set [count PVDZE_serverObjectMonitor,_object];
+
+//diag_log ("PUBLISH: Created " + (_class) + " with ID " + _uid);

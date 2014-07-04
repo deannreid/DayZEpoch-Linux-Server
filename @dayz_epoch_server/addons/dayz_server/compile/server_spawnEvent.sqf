@@ -3,7 +3,6 @@
 	Usage: spawn server_spawnEvents;
 	Made for DayZ Epoch please ask permission to use/edit/distrubute email vbawol@veteranbastards.com.
 */
-//Use old 1.0.4.2 server_spawnEvent.sqf 
 
 private ["_date","_key","_result","_outcome","_handle","_time","_datestr"];
 

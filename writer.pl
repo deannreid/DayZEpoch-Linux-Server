@@ -19,9 +19,9 @@ use constant {
 
     CACHE_DIR => $ENV{'PWD'}.'/cache/',
     # Start inventory of player
-    INVENTORY => '[["ItemFlashlight","ItemMap","ItemGPS","MeleeCrowbar"],["ItemBandage","ItemPainkiller","ItemSodaPepsi","ItemSodaCoke","FoodbeefCooked"]]',
-    BACKPACK  => '["DZ_Patrol_Pack_EP1",[],[]]',
-    MODEL     => '"Survivor2_DZ"'
+		INVENTORY => '[[],[]]',
+		BACKPACK  => '["",[],[]]',
+		MODEL     => '"Survivor2_DZ"'
 };
 
 my %cid_inv = ();

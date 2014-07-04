@@ -1,5 +1,7 @@
 private ["_characterID","_playerObj","_playerID","_dummy","_worldspace","_state","_doLoop","_key","_primary","_medical","_stats","_humanity","_lastinstance","_friendlies","_randomSpot","_position","_debug","_distance","_hit","_fractures","_score","_findSpot","_pos","_isIsland","_w","_clientID","_spawnMC","_namespace"];
 
+//diag_log ("SETUP: attempted with " + str(_this));
+
 _characterID = _this select 0;
 _playerObj = _this select 1;
 _playerID = getPlayerUID _playerObj;
@@ -9,6 +11,7 @@ if (isNull _playerObj) exitWith {
 };
 
 //Add MPHit event handler
+// diag_log("Adding MPHit EH for " + str(_playerObj));
 _playerObj addMPEventHandler ["MPHit", {_this spawn fnc_plyrHit;}];
 
 if (_playerID == "") then {
@@ -68,20 +71,27 @@ while {_doLoop < 5} do {
     _doLoop = _doLoop + 1;
 };
 
-if (isNull _playerObj || !isPlayer _playerObj) exitWith {
+if (isNull _playerObj or !isPlayer _playerObj) exitWith {
 	diag_log ("SETUP RESULT: Exiting, player object null: " + str(_playerObj));
 };
 
+//Wait for HIVE to be free
+//diag_log ("SETUP: RESULT: Successful with " + str(_primary));
 
 _medical =		_primary select 1;
 _stats =		_primary select 2;
 _state =		_primary select 3;
 _worldspace = 	_primary select 4;
 _humanity =		_primary select 5;
-_lastinstance =	_primary select 6;
+_characterID =	_primary select 6;
+_lastinstance =	dayZ_instance;
+
+diag_log format["_characterID: %1", _characterID];
 
 //Set position
 _randomSpot = false;
+
+diag_log ("WORLDSPACE: " + str(_worldspace));
 
 if (count _worldspace > 0) then {
 
@@ -106,9 +116,12 @@ if (count _worldspace > 0) then {
 		_randomSpot = true;
 	};
 
+	//_playerObj setPosATL _position;
 } else {
 	_randomSpot = true;
 };
+
+diag_log ("LOGIN: Location: " + str(_worldspace) + " doRnd?: " + str(_randomSpot));
 
 //set medical values
 if (count _medical > 0) then {
@@ -125,9 +138,10 @@ if (count _medical > 0) then {
 	//Add Wounds
 	{
 		_playerObj setVariable[_x,true,true];
+		//["usecBleed",[_playerObj,_x,_hit]] call broadcastRpcCallAll;
 		usecBleed = [_playerObj,_x,_hit];
 		publicVariable "usecBleed";
-	} count (_medical select 8);
+	} forEach (_medical select 8);
 	
 	//Add fractures
 	_fractures = (_medical select 9);
@@ -209,12 +223,12 @@ if (_randomSpot) then {
 	_mkr = "";
 	while {_findSpot} do {
 		_counter = 0;
-		while {_counter < 20 && _findSpot} do {
+		while {_counter < 20 and _findSpot} do {
 			// switched to floor
 			_mkr = "spawn" + str(floor(random _spawnMC));
 			_position = ([(getMarkerPos _mkr),0,spawnArea,10,0,2000,spawnShoremode] call BIS_fnc_findSafePos);
 			_isNear = count (_position nearEntities ["Man",100]) == 0;
-			_isZero = ((_position select 0) == 0) && ((_position select 1) == 0);
+			_isZero = ((_position select 0) == 0) and ((_position select 1) == 0);
 			//Island Check		//TeeChange
 			_pos 		= _position;
 			_isIsland	= false;		//Can be set to true during the Check
@@ -225,17 +239,19 @@ if (_randomSpot) then {
 				};
 			};
 			
-			if ((_isNear && !_isZero) || _isIsland) then {_findSpot = false};
+			if ((_isNear and !_isZero) || _isIsland) then {_findSpot = false};
 			_counter = _counter + 1;
 		};
 	};
-	_isZero = ((_position select 0) == 0) && ((_position select 1) == 0);
+	_isZero = ((_position select 0) == 0) and ((_position select 1) == 0);
 	_position = [_position select 0,_position select 1,0];
 	if (!_isZero) then {
-
+		//_playerObj setPosATL _position;
 		_worldspace = [0,_position];
 	};
 };
+
+diag_log ("SETUP WORLDSPACE: " + str(_worldspace));
 
 //Record player for management
 dayz_players set [count dayz_players,_playerObj];
@@ -244,23 +260,30 @@ dayz_players set [count dayz_players,_playerObj];
 _playerObj setVariable["CharacterID",_characterID,true];
 _playerObj setVariable["humanity",_humanity,true];
 _playerObj setVariable["humanity_CHK",_humanity];
+//_playerObj setVariable["worldspace",_worldspace,true];
+//_playerObj setVariable["state",_state,true];
 _playerObj setVariable["lastPos",getPosATL _playerObj];
 
 dayzPlayerLogin2 = [_worldspace,_state];
 
+// PVDZE_obj_Debris = DZE_LocalRoadBlocks;
 _clientID = owner _playerObj;
 if (!isNull _playerObj) then {
 	_clientID publicVariableClient "dayzPlayerLogin2";
 	
 	if (isNil "PVDZE_plr_SetDate") then {
-		diag_log ("Time Sync ERROR!!");
-		call server_timeSync;
-		
+	    //call server_timeSync;
+            diag_log ("TIME SYNC ERROR!");
+            PVDZE_plr_SetDate = date;
+            publicVariable "PVDZE_plr_SetDate";
 	};
 	_clientID publicVariableClient "PVDZE_plr_SetDate";
 };
 //record time started
 _playerObj setVariable ["lastTime",time];
+//_playerObj setVariable ["model_CHK",typeOf _playerObj];
+
+//diag_log ("LOGIN PUBLISHING: " + str(_playerObj) + " Type: " + (typeOf _playerObj));
 
 PVDZE_plr_Login = nil;
 PVDZE_plr_Login2 = nil;

@@ -1,0 +1,27 @@
+Make sure you edit the location to your servers files...
+
+===========================
+//Restarter.pl *Required*
+0 0,3,6,9,12,15,18,21 * * * cd / && /home/dayzservers/epochchernarus/restarter.pl #Restart Epoch
+===========================
+
+
+===========================
+// Time Set Cron, *Not Required* -- Set to go off every 5 minutes
+
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * cd / && /home/dayzservers/epochchernarus/changetime.pl >> /home/dayzservers/epochchernarus/logs/changetime.log #Chernarus Time Set
+===========================
+
+
+===========================
+//Restart Warnings *Not Required* 
+
+10,30,50 0-1 * * * php -q /home/dayzservers/epochchernarus/Restart/resinf.php  #Restart Information
+0 1,4,7,10,13,16,19,22 * * * php -q /home/dayzservers/epochchernarus/Restart/2hr.php  #2 Hour Restart Warning
+0 2,5,8,11,14,17,20,23 * * * php -q /home/dayzservers/epochchernarus/Restart/1hr.php  #1 Hour Restart
+30 2,5,8,11,14,17,20,23 * * * php -q /home/dayzservers/epochchernarus/Restart/30min.php   #30 Min Restart
+45 2,5,8,11,14,17,20,23 * * * php -q /home/dayzservers/epochchernarus/Restart/15min.php    #15 Min Restart
+50 2,5,8,11,14,17,20,23 * * * php -q /home/dayzservers/epochchernarus/Restart/10min.php     #10 Min Restart
+55 2,5,8,11,14,17,20,23 * * * php -q /home/dayzservers/epochchernarus/Restart/5min.php      #5 Min Restart
+59 2,5,8,11,14,17,20,23 * * * php -q /home/dayzservers/epochchernarus/Restart/1min.php        #1 Min Restart
+===========================

@@ -38,7 +38,7 @@ if(_objectID == "0" && _objectUID == "0") then {
 };
 
 _allowed = [_object, "Server"] call check_publishobject;
-if (!_allowed || !_proceed) exitWith { 
+if (!_allowed or !_proceed) exitWith { 
 	if(!isNull(_object)) then {
 		deleteVehicle _object; 
 	};
@@ -51,13 +51,13 @@ _object setVariable ["CharacterID",_charID,true];
 //_object setVariable ["ObjectUID",_objectUID,true];
 _object setVariable ["OEMPos",(_worldspace select 1),true];
 
+//diag_log ("PUBLISH: Attempt " + str(_object));
 
 //get UID
 _uid = _worldspace call dayz_objectUID2;
 
 //Send request
-_key = format["CHILD:308:%1:%2:%3:%4:%5:%6:%7:%8:%9:",dayZ_instance, _class, 0 , _charID, _worldspace, [], [], 0,_uid];
-
+diag_log format["CHILD:308:%1:%2:%3:%4:%5:%6:%7:%8:%9:",dayZ_instance, _class, 0 , _charID, _worldspace, [], [], 0,_uid];
 
 _object setVariable ["lastUpdate",time];
 _object setVariable ["ObjectUID", _uid,true];
