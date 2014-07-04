@@ -6,7 +6,6 @@ BIS_MPF_remoteExecutionServer = {
 	};
 };
 
-
 MyPlayerCounter = 1;
 
 BIS_Effects_Burn =				{};
@@ -330,6 +329,7 @@ spawn_vehicles = {
 			clearWeaponCargoGlobal  _veh;
 			clearMagazineCargoGlobal  _veh;
 
+			// Add 0-3 loots to vehicle using random cfgloots 
 			_num = floor(random 4);
 			_allCfgLoots = ["trash","civilian","food","generic","medical","military","policeman","hunter","worker","clothes","militaryclothes","specialclothes","trash"];
 			
@@ -337,10 +337,15 @@ spawn_vehicles = {
 				_iClass = _allCfgLoots call BIS_fnc_selectRandom;
 
 				_itemTypes = [];
-				if (DZE_MissionLootTable) then {
-					_itemTypes = ((getArray (missionConfigFile >> "cfgLoot" >> _iClass)) select 0);
-				} else {
-					_itemTypes = ((getArray (configFile >> "cfgLoot" >> _iClass)) select 0);
+				if (DZE_MissionLootTable) then{
+					{
+						_itemTypes set[count _itemTypes, _x select 0]
+					} count getArray(missionConfigFile >> "cfgLoot" >> _iClass);
+				}
+				else {
+					{
+						_itemTypes set[count _itemTypes, _x select 0]
+					} count getArray(configFile >> "cfgLoot" >> _iClass);
 				};
 
 				_index = dayz_CLBase find _iClass;
@@ -351,7 +356,7 @@ spawn_vehicles = {
 				_index = _weights select _index;
 				_itemType = _itemTypes select _index;
 				_veh addMagazineCargoGlobal [_itemType,1];
-
+				//diag_log("DEBUG: spawed loot inside vehicle " + str(_itemType));
 			};
 
 			[_veh,[_dir,_objPosition],_vehicle,true,"0"] call server_publishVeh;

@@ -196,39 +196,42 @@ INSERT INTO `trader_tids` VALUES (1,'Sidearm',1),(2,'Rifles',1),(3,'Shotguns and
 UNLOCK TABLES;
 
 
+--
 --Events
+--
 
-DROP TRIGGER IF EXISTS char_gender_fix;
+DROP TRIGGER IF EXISTS char_gender_fix
+
 DELIMITER $$
+
 CREATE TRIGGER char_gender_fix
-BEFORE INSERT ON Character_DATA
-FOR EACH ROW BEGIN
-DECLARE oldCharacterID INT;
-DECLARE oldHumanity INT;
-IF (NEW.Alive = 1) THEN
-	
-	SELECT CharacterID, Humanity INTO oldCharacterID, oldHumanity
-	FROM `Character_DATA` 
-	WHERE PlayerUID = NEW.PlayerUID
-	AND Alive = '0'
-	ORDER BY CharacterID Desc
-	LIMIT 1;
-	SET NEW.Inventory = '[[],[]]';
-  	SET NEW.Backpack = '["",[],[]]';
-  	SET NEW.Worldspace = '[]';
-  	SET NEW.Medical = '[]';
-  	SET NEW.KillsZ = 0;
-  	SET NEW.HeadshotsZ = 0;
-  	SET NEW.DistanceFoot = 0;
-  	SET NEW.Duration = 0;
-  	SET NEW.CurrentState = '[]';
-  	SET NEW.KillsH = 0;
-  	SET NEW.Model = '"Survivor2_DZ"';
-  	SET NEW.KillsB = 0;
-	IF (oldCharacterID IS NOT NULL) THEN
-          SET NEW.Humanity = oldHumanity;
-        ELSE
-          SET NEW.Humanity = 2500;
-        END IF;
-END IF;
-END
+BEFORE INSERT ON Character_DATA FOR EACH ROW 
+BEGIN
+	DECLARE oldCharacterID integer;
+	DECLARE oldHumanity integer;
+		IF (NEW.Alive = 1) THEN
+			SELECT CharacterID, Humanity INTO oldCharacterID, oldHumanity
+			FROM `Character_DATA` 
+			WHERE PlayerUID = NEW.PlayerUID
+			AND Alive = '0'
+			ORDER BY CharacterID Desc
+			LIMIT 1;
+			SET NEW.Inventory = '[[],[]]';
+			SET NEW.Backpack = '["",[],[]]';
+			SET NEW.Worldspace = '[]';
+			SET NEW.Medical = '[]';
+			SET NEW.KillsZ = 0;
+			SET NEW.HeadshotsZ = 0;
+			SET NEW.DistanceFoot = 0;
+			SET NEW.Duration = 0;
+			SET NEW.CurrentState = '[]';
+			SET NEW.KillsH = 0;
+			SET NEW.Model = '"Survivor2_DZ"';
+			SET NEW.KillsB = 0;
+				IF (oldCharacterID IS NOT NULL) THEN
+				SET NEW.Humanity = oldHumanity;
+				ELSE
+				SET NEW.Humanity = 2500;
+				END IF;
+		END IF;
+END;$$
