@@ -1,4 +1,4 @@
-private ["_isInfected","_doLoop","_hiveVer","_isHiveOk","_playerID","_playerObj","_primary","_key","_charID","_playerName","_backpack","_isNew","_inventory","_survival","_model","_mags","_wpns","_bcpk","_config","_newPlayer"];
+private ["_res","_isInfected","_doLoop","_hiveVer","_isHiveOk","_playerID","_playerObj","_primary","_key","_charID","_playerName","_backpack","_isNew","_inventory","_survival","_model","_mags","_wpns","_bcpk","_config","_newPlayer"];
 
 #ifdef DZE_SERVER_DEBUG
 diag_log ("STARTING LOGIN: " + str(_this));
@@ -69,8 +69,8 @@ while {_doLoop < 5} do {
             _primary = call compile _res;
         };
         _res = nil;
-		
 		onPlayerConnected "[_id, _name] execVM ""\z\addons\dayz_server\compile\server_setTime.sqf""";
+  
         MyPlayerCounter = MyPlayerCounter + 1;
         diag_log format["CHILD:11:%1:", MyPlayerCounter];
 

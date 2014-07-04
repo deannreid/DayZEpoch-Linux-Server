@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 private ["_character","_traderid","_buyorsell","_data","_result","_key","_outcome","_clientID"];
+=======
+private ["_player","_name","_traderid","_buyorsell","_data","_result","_key","_outcome","_clientID"];
+>>>>>>> parent of 92a2206... Fixed Undefined Variable in player_login
 
 _player =		_this select 0;
 _traderID = 	_this select 1;
