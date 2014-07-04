@@ -1,0 +1,1 @@
+[[6264,["M249_EP1_DZ",3],10,[8,"ItemGoldBar",1],[4,"ItemGoldBar",1],0,616,"trade_weapons"],[6265,["M240_DZ",3],10,[6,"ItemGoldBar",1],[3,"ItemGoldBar",1],0,616,"trade_weapons"],[6266,["Mk_48_DZ",3],10,[1,"ItemGoldBar10oz",1],[5,"ItemGoldBar",1],0,616,"trade_weapons"],[6267,["Pecheneg_DZ",3],10,[6,"ItemGoldBar",1],[3,"ItemGoldBar",1],0,616,"trade_weapons"]]

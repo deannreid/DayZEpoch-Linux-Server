@@ -1,0 +1,1 @@
+[[6752,["SmokeShell",1],10,[2,"ItemSilverBar10oz",1],[5,"ItemSilverBar",1],0,671,"trade_items"],[6753,["SmokeShellGreen",1],10,[2,"ItemSilverBar10oz",1],[5,"ItemSilverBar",1],0,671,"trade_items"],[6754,["SmokeShellRed",1],10,[2,"ItemSilverBar10oz",1],[5,"ItemSilverBar",1],0,671,"trade_items"]]

@@ -1,0 +1,1 @@
+[[7275,["Su25_TK_EP1",2],2,[10,"ItemBriefcase100oz",1],[7,"ItemBriefcase100oz",1],0,998,"trade_any_vehicle"],[7319,["Su34",2],2,[10,"ItemBriefcase100oz",1],[5,"ItemBriefcase100oz",1],0,998,"trade_any_vehicle"]]
