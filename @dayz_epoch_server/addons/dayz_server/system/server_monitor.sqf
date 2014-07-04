@@ -305,12 +305,6 @@ if (isServer and isNil "sm_done") then {
 		OldHeliCrash = false;
 	};
 
-        // WAI missions
-        [] ExecVM "\z\addons\dayz_server\WAI\init.sqf";
-        //call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\dzai_initserver.sqf";
-        // DZMS missions
-        [] ExecVM "\z\addons\dayz_server\DZMS\DZMSInit.sqf";
-
 	allowConnection = true;
 
 	// [_guaranteedLoot, _randomizedLoot, _frequency, _variance, _spawnChance, _spawnMarker, _spawnRadius, _spawnFire, _fadeFire]
