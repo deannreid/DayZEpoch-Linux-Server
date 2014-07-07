@@ -1,5 +1,7 @@
 Make sure you edit the location to your servers files...
 
+To install these crons. In your servers ftp go to the directory "/var/spool/cron/crontabs" and then copy/paste the cron jobs you want to use which would be restarter.pl and for example  time sync into the file which is usually your User-name. For example for the user root the file would be called root, and for dayzaccount the file would be called dayzaccount, if it isn't there then make a blank file called the login you use and paste in the crons you wish to use remembering to change the location on the cron to your server folder.
+
 ===========================
 //Restarter.pl *Required*
 0 0,3,6,9,12,15,18,21 * * * cd / && /home/dayzservers/epochchernarus/restarter.pl #Restart Epoch
@@ -25,3 +27,69 @@ Make sure you edit the location to your servers files...
 55 2,5,8,11,14,17,20,23 * * * php -q /home/dayzservers/epochchernarus/Restart/5min.php      #5 Min Restart
 59 2,5,8,11,14,17,20,23 * * * php -q /home/dayzservers/epochchernarus/Restart/1min.php        #1 Min Restart
 ===========================
+
+
+If you use an external client like webmin or cpanel to manage your server
+
+/*For Webmin*/
+
+1. Login
+2. Select "System" on the left
+3. Select "Scheduled Cron Jobs"
+4. Click the button at the top that says "Create a new scheduled cron job"
+=== In Order ===
+==Job Details==
+Execute cron job as: "Your Login Username" e.g dayzservers. or click the button next to the text box and select your username *Case Sensitive*
+Active? Select Yes!
+Command: Copy and paste a command from below
+Input to command: BLANK
+Description: e.g DayZ Epoch Panthera Restarter
+
+==When to Execute==
+You can select from the drop down box or for a 3 hour restart *Make sure this is correct or your server will restart every minute!*
+
+In the Minutes Box select: 0 
+In the hours box select: 0 3 6 9 12 15 18 31 
+
+Make sure it says Selected .. and not All   keep "Days, Months, Weekdays set to all"
+
+then under "Date range to execute" Select Run on any date!
+
+then click Save and then follow from the top for each cron
+
+/*For cPanel*/
+
+1. Login
+2. Scroll down to Advanced Tab
+3. Click Cron Jobs
+=== In Order ===
+
+Common Settings: Select one of the defaults if you wish
+
+Minute: 0
+Hour: Select the drop down box and select what you want.
+Day: *
+Month: *
+Weekday: *
+ 
+Command: Select from below
+
+then Click Add New Cron Job and it should show at the bottom
+
+/*			*/
+/* Commands */
+/*			*/
+ 
+ Restarter:  cd / && /home/dayzservers/epochchernarus/restarter.pl 
+ 
+ Time Sync: cd / && /home/dayzservers/epochchernarus/changetime.pl >> /home/dayzservers/epochchernarus/logs/changetime.log 2>&1 
+ 
+ Restart Warnings:
+ 
+ 2 Hr: php -q /home/dayzservers/epochchernarus/Restart/2hr.php
+ 1 Hr: php -q /home/dayzservers/epochchernarus/Restart/1hr.php
+ 30 Min: php -q /home/dayzservers/epochchernarus/Restart/30min.php
+ 15 Min: php -q /home/dayzservers/epochchernarus/Restart/15min.php
+ 10 Min: php -q /home/dayzservers/epochchernarus/Restart/10min.php
+ 5 Min: php -q /home/dayzservers/epochchernarus/Restart/5min.php
+ 1 Min: php -q /home/dayzservers/epochchernarus/Restart/1min.php
