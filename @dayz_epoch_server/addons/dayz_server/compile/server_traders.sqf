@@ -9,14 +9,14 @@ _clientID = owner _character;
 // add cacheing
 _retrader = call compile format["ServerTcache_%1;",_traderid];
 
-if (isNil "_retrader") then {	
+if (isNil "_retrader") then {
     _retrader = [];
-    
+
     _key = format["\cache\traders\%1.sqf", _traderid];
     diag_log ("LOAD TRADER: "+_key);
     _res = preprocessFile _key;
     diag_log ("TRADER CACHE: "+_res);
-        
+
     if ((_res == "") or (isNil "_res")) then {
         diag_log ("TRADER NOT FOUND");
     } else {
@@ -32,7 +32,7 @@ if (isNil "_retrader") then {
 
         _myArr = nil;
     };
-    _res = nil;	
+    _res = nil;
 };
 
 // diag_log(_retrader);
