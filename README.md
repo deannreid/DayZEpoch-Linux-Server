@@ -1,5 +1,9 @@
 Original Git by Denisio:  https://github.com/denisio/Dayz-Epoch-Linux-Server
 
+**Original Git is now updated to 1.0.5.1 please use that**
+==============
+
+
 Dayz-Epoch-Linux-Server
 =======================
 
