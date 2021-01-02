@@ -11,7 +11,6 @@ dayZ_instance = 16;	//The instance
 dayzHiveRequest = [];
 initialized = false;
 dayz_previousID = 0;
-DayZ_UseSteamID = true;	
 
 //disable greeting menu 
 player setVariable ["BIS_noCoreConversations", true];
@@ -31,27 +30,19 @@ dayz_MapArea = 12000; // Default = 10000
 // new stuff
 dayz_paraSpawn = false;
 
-DZE_DiagFpsSlow = true;
-DZE_DiagVerbose = false;
-DZE_DiagFpsFast = false;
-
 dayz_sellDistance_vehicle = 10;
 dayz_sellDistance_boat = 30;
 dayz_sellDistance_air = 40;
 
-dayz_maxAnimals = 8; // Default: 8
+dayz_maxAnimals = 5; // Default: 8
 dayz_tameDogs = true;
 DynamicVehicleDamageLow = 0; // Default: 0
 DynamicVehicleDamageHigh = 100; // Default: 100
 
+DZE_BuildOnRoads = false; // Default: False
+
 EpochEvents = [["any","any","any","any",30,"crash_spawner"],["any","any","any","any",0,"crash_spawner"],["any","any","any","any",15,"supply_drop"]];
 dayz_fullMoonNights = true;
-
-//Player Loadout//
-DefaultMagazines = ["ItemBandage","ItemSodaCoke","FoodCanBakedBeans"]; 
-DefaultWeapons = ["ItemCompass","ItemRadio","ItemToolbox","ItemMachete"]; 
-DefaultBackpack = "DZ_TerminalPack_EP1"; 
-DefaultBackpackItems = "";
 
 // DZEdebug = true;
 
@@ -93,7 +84,7 @@ if (!isDedicated) then {
 	[] execVM "\z\addons\dayz_code\system\antihack.sqf";
 
 	//Lights
-	//[0,0,true,true,true,58,280,600,[0.698, 0.556, 0.419],"Generator_DZ",0.1] execVM "\z\addons\dayz_code\compile\local_lights_init.sqf";
+	//[false,12] execVM "\z\addons\dayz_code\compile\local_lights_init.sqf";
 };
 
 #include "\z\addons\dayz_code\system\REsec.sqf"
@@ -102,4 +93,3 @@ if (!isDedicated) then {
 execVM "\z\addons\dayz_code\external\DynamicWeatherEffects.sqf";
 
 #include "\z\addons\dayz_code\system\BIS_Effects\init.sqf"
-

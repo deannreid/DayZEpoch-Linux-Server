@@ -11,7 +11,6 @@ dayZ_instance =	24;				//The instance
 dayzHiveRequest = [];
 initialized = false;
 dayz_previousID = 0;
-DayZ_UseSteamID = true;	
 
 //disable greeting menu 
 player setVariable ["BIS_noCoreConversations", true];
@@ -28,17 +27,19 @@ MaxVehicleLimit = 300; // Default = 50
 MaxDynamicDebris = 500; // Default = 100
 dayz_MapArea = 18000; // Default = 10000
 
-dayz_minpos = -1000; 
-dayz_maxpos = 26000;
-
-dayz_paraSpawn = true;
-
+DZE_SelfTransfuse = true;
+DZE_DeathMsgGlobal = true;
 DZE_PlayerZed   = false;
 DZE_GodModeBase = true;
 
 DZE_DiagFpsSlow = true;
 DZE_DiagVerbose = false;
 DZE_DiagFpsFast = false;
+
+dayz_minpos = -1000; 
+dayz_maxpos = 26000;
+
+dayz_paraSpawn = true;
 
 dayz_sellDistance_vehicle = 10;
 dayz_sellDistance_boat = 30;
@@ -48,12 +49,6 @@ dayz_maxAnimals = 5; // Default: 8
 dayz_tameDogs = true;
 DynamicVehicleDamageLow = 0; // Default: 0
 DynamicVehicleDamageHigh = 100; // Default: 100
-
-//Player Loadout//
-DefaultMagazines = ["ItemBandage","ItemSodaCoke","FoodCanBakedBeans"]; 
-DefaultWeapons = ["ItemCompass","ItemRadio","ItemToolbox","ItemMachete"]; 
-DefaultBackpack = "DZ_TerminalPack_EP1"; 
-DefaultBackpackItems = "";
 
 DZE_BuildOnRoads = false; // Default: False
 

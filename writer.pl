@@ -3,6 +3,8 @@
 # Copyright 2013 by Denis Erygin,
 # denis.erygin@gmail.com
 #
+# Updated to 1.0.6.1 by Dean Reid @ https://github.com/deannreid
+#
 
 use JSON::XS;
 use DBI;

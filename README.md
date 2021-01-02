@@ -1,13 +1,17 @@
 Original Git by Denisio:  https://github.com/denisio/Dayz-Epoch-Linux-Server
 
-**Original Git is now updated to 1.0.5.1 please use that**
+**Original Git was only active until 1.0.5.1..**
+
+** This Git has been updated to 1.0.6.2 - Please expect bugs. If you find any. let me know through Github issues and i'll get them sorted.**
+** Please test this before upgrading your production server** 
+** I won't be held responsible for any lost data **
 ==============
 
 
 Dayz-Epoch-Linux-Server
 =======================
 
-A private hive DayZ Epoch 1.0.5.1 server on Linux
+A private hive DayZ Epoch 1.0.6.2 server on Linux
 
 Installation instructions
 =========================
@@ -23,9 +27,8 @@ Installation instructions
    like missions or mods):<br>
    GOOD: "/home/bob/arma2arrowhead"<br>
    BAD:  "/home/bob/ArmA2ArrowHead"<br>
-   http://rutor.org/torrent/240581/
 
-3. Download and install DayZ Epoch Mod 1.0.4.2 (http://goo.gl/mzhHZW).
+3. Download and install DayZ Epoch Mod 1.0.6.2 (https://github.com/EpochModTeam/DayZ-Epoch/releases/download/1.0.6.2/DayZ_Epoch_Server_1.0.6.2_Release.7z).
 
 4. Run ./install<br>
    Watch the messages - they might inform you whether your installation

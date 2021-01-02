@@ -18,7 +18,7 @@ class Mission
 		"ind_tank",
 		"camisc_e",
 		"glt_m300t",
-		
+		"pook_h13",
 		"csj_gyroac",
 		"map_eu",
 		"jetskiyanahuiaddon"
@@ -1176,7 +1176,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=23;
+		items=24;
 		class Item0
 		{
 			position[]={5192.2104,62.495663,4994.3667};
@@ -1266,8 +1266,8 @@ class Mission
 		class Item14
 		{
 			position[]={5232.6299,1.9700195,8228.4785};
-			name="WholesalerWest";
-			text="West's Wholesaler";
+			name="WholesalerNorth";
+			text="North's Wholesaler";
 			type="mil_dot";
 			colorName="ColorBlack";
 		};
@@ -1335,10 +1335,18 @@ class Mission
 			type="mil_circle";
 			colorName="ColorBrown";
 		};
+		class Item23
+		{
+			position[]={3804.6707,-1.1429843,7656.6055};
+			name="Boat2";
+			text="North Boat Vendor";
+			type="mil_dot";
+			colorName="ColorBlack";
+		};
 	};
 	class Sensors
 	{
-		items=10;
+		items=11;
 		class Item0
 		{
 			position[]={4419.9492,22.076105,1629.0402};
@@ -1350,8 +1358,8 @@ class Mission
 			age="UNKNOWN";
 			name="TraderCity1";
 			expCond="(player distance TraderCity1) < 100; ";
-			expActiv="TitleText[""Now Entering Trader City Pikla"",""PLAIN DOWN""]; canbuild = false;";
-			expDesactiv="TitleText[""Now Leaving Trader City Pikla"",""PLAIN DOWN""]; canbuild = true;";
+			expActiv="[""trader city Pikla"",true,""enter""] spawn player_traderCity;";
+			expDesactiv="[""trader city Pikla"",true,""leave""] spawn player_traderCity;";
 			class Effects
 			{
 			};
@@ -1367,8 +1375,8 @@ class Mission
 			age="UNKNOWN";
 			name="TraderCity2";
 			expCond="(player distance TraderCity2) < 100; ";
-			expActiv="TitleText[""Now Entering Trader City Selca"",""PLAIN DOWN""]; canbuild = false;";
-			expDesactiv="TitleText[""Now Leaving Trader City Selca"",""PLAIN DOWN""]; canbuild = true;";
+			expActiv="[""trader city Selca"",true,""enter""] spawn player_traderCity;";
+			expDesactiv="[""trader city Selca"",true,""leave""] spawn player_traderCity;";
 			class Effects
 			{
 			};
@@ -1384,8 +1392,8 @@ class Mission
 			age="UNKNOWN";
 			name="HeroVendors";
 			expCond="(player distance HeroVendors) < 100; ";
-			expActiv="TitleText[""Now Entering Hero Trader Camp"",""PLAIN DOWN""]; canbuild = false;";
-			expDesactiv="TitleText[""Now Leaving Hero Trader Camp"",""PLAIN DOWN""]; canbuild = true;";
+			expActiv="[""Hero Trader Camp"",true,""enter""] spawn player_traderCity;";
+			expDesactiv="[""Hero Trader Camp"",true,""leave""] spawn player_traderCity;";
 			class Effects
 			{
 			};
@@ -1401,8 +1409,8 @@ class Mission
 			age="UNKNOWN";
 			name="WholeSaler1";
 			expCond="(player distance WholeSaler1) < 100; ";
-			expActiv="TitleText[""Now Entering South's Wholesale"",""PLAIN DOWN""]; canbuild = false;";
-			expDesactiv="TitleText[""Now Leaving South's Wholesale"",""PLAIN DOWN""]; canbuild = true;";
+			expActiv="[""South's Wholesale"",true,""enter""] spawn player_traderCity;";
+			expDesactiv="[""South's Wholesale"",true,""leave""] spawn player_traderCity;";
 			class Effects
 			{
 			};
@@ -1418,8 +1426,8 @@ class Mission
 			age="UNKNOWN";
 			name="BanditTrader";
 			expCond="(player distance BanditTrader) < 100; ";
-			expActiv="TitleText[""Now Entering Bandit Camp"",""PLAIN DOWN""]; canbuild = false;";
-			expDesactiv="TitleText[""Now Leaving Bandit Camp"",""PLAIN DOWN""]; canbuild = true;";
+			expActiv="[""Bandit Camp"",true,""enter""] spawn player_traderCity;";
+			expDesactiv="[""Bandit Camp"",true,""leave""] spawn player_traderCity;";
 			class Effects
 			{
 			};
@@ -1435,8 +1443,8 @@ class Mission
 			age="UNKNOWN";
 			name="AWOLsAirField";
 			expCond="(player distance AWOLsAirField) < 100; ";
-			expActiv="TitleText[""Now Entering AWOLs Airfield"",""PLAIN DOWN""]; canbuild = false;";
-			expDesactiv="TitleText[""Now Leaving AWOLs Airfield"",""PLAIN DOWN""]; canbuild = true;";
+			expActiv="[""AWOLs Airfield"",true,""enter""] spawn player_traderCity;";
+			expDesactiv="[""AWOLs Airfield"",true,""leave""] spawn player_traderCity;";
 			class Effects
 			{
 			};
@@ -1452,8 +1460,8 @@ class Mission
 			age="UNKNOWN";
 			name="Wholesaler2";
 			expCond="(player distance Wholesaler2) < 100; ";
-			expActiv="TitleText[""Now Entering West's Wholesale"",""PLAIN DOWN""]; canbuild = false;";
-			expDesactiv="TitleText[""Now Leaving West's Wholesale"",""PLAIN DOWN""]; canbuild = true;";
+			expActiv="[""West's Wholesale"",true,""enter""] spawn player_traderCity;";
+			expDesactiv="[""West's Wholesale"",true,""leave""] spawn player_traderCity;";
 			class Effects
 			{
 			};
@@ -1469,8 +1477,8 @@ class Mission
 			age="UNKNOWN";
 			name="BoatVendor";
 			expCond="(player distance BoatVendor) < 100; ";
-			expActiv="TitleText[""Now Entering Sams Boat Vendor"",""PLAIN DOWN""]; canbuild = false;";
-			expDesactiv="TitleText[""Now Leaving Sams Boat Vendor"",""PLAIN DOWN""]; canbuild = true;";
+			expActiv="[""Sams Boat Vendor"",true,""enter""] spawn player_traderCity;";
+			expDesactiv="[""Sams Boat Vendor"",true,""leave""] spawn player_traderCity;";
 			class Effects
 			{
 			};
@@ -1486,8 +1494,8 @@ class Mission
 			age="UNKNOWN";
 			name="PlanicaTraders";
 			expCond="(player distance PlanicaTraders) < 100; ";
-			expActiv="TitleText[""Now Entering Trader City Planica"",""PLAIN DOWN""]; canbuild = false;";
-			expDesactiv="TitleText[""Now Leaving Trader City Planica"",""PLAIN DOWN""]; canbuild = true;";
+			expActiv="[""trader city Planica"",true,""enter""] spawn player_traderCity;";
+			expDesactiv="[""trader city Planica"",true,""leave""] spawn player_traderCity;";
 			class Effects
 			{
 			};
@@ -1501,10 +1509,27 @@ class Mission
 			repeating=1;
 			interruptable=1;
 			age="UNKNOWN";
-			name="PlanicaTraders_1";
-			expCond="(player distance PlanicaTraders) < 100; ";
-			expActiv="TitleText[""Now Entering Trader City Planica"",""PLAIN DOWN""]; canbuild = false;";
-			expDesactiv="TitleText[""Now Leaving Trader City Planica"",""PLAIN DOWN""]; canbuild = true;";
+			name="MelloVehicleRepair";
+			expCond="(player distance MelloVehicleRepair) < 100; ";
+			expActiv="[""Mello"",true,""enter""] spawn player_traderCity;";
+			expDesactiv="[""Mello"",true,""leave""] spawn player_traderCity;";
+			class Effects
+			{
+			};
+		};
+		class Item10
+		{
+			position[]={3807.3525,0.86945671,7661.0386};
+			a=100;
+			b=100;
+			activationBy="WEST";
+			repeating=1;
+			interruptable=1;
+			age="UNKNOWN";
+			name="BOAT12";
+			expCond="(player distance BOAT12) < 100; ";
+			expActiv="[""North Boat Vendor"",true,""enter""] spawn player_traderCity;";
+			expDesactiv="[""North Boat Vendor"",true,""leave""] spawn player_traderCity;";
 			class Effects
 			{
 			};

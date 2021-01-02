@@ -5,7 +5,7 @@ OnLoadIntro = "Welcome to Napf";
 OnLoadIntroTime = False;
 OnLoadMissionTime = False;
 disabledAI = true;
-disableChannels[]={};
+disableChannels[]={0,2,6};
 enableItemsDropping=0;
 
 briefing = 0;

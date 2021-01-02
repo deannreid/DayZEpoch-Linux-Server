@@ -11,7 +11,6 @@ dayZ_instance =	11;					//The instance
 dayzHiveRequest = [];
 initialized = false;
 dayz_previousID = 0;
-DayZ_UseSteamID = true;	
 
 //disable greeting menu 
 player setVariable ["BIS_noCoreConversations", true];
@@ -31,6 +30,8 @@ dayz_maxLocalZombies = 30; // Default = 30
 
 dayz_paraSpawn = false;
 
+DZE_SelfTransfuse = true;
+DZE_DeathMsgGlobal = true;
 DZE_PlayerZed   = false;
 DZE_GodModeBase = true;
 
@@ -51,14 +52,6 @@ DynamicVehicleDamageLow = 0; // Default: 0
 DynamicVehicleDamageHigh = 100; // Default: 100
 
 DZE_BuildOnRoads = false; // Default: False
-
-
-//Player Loadout//
-DefaultMagazines = ["ItemBandage","ItemSodaCoke","FoodCanBakedBeans"]; 
-DefaultWeapons = ["ItemCompass","ItemRadio","ItemToolbox","ItemMachete"]; 
-DefaultBackpack = "DZ_TerminalPack_EP1"; 
-DefaultBackpackItems = "";
-
 
 EpochEvents = [["any","any","any","any",30,"crash_spawner"],["any","any","any","any",0,"crash_spawner"],["any","any","any","any",15,"supply_drop"]];
 dayz_fullMoonNights = true;
@@ -102,6 +95,7 @@ if (!isDedicated) then {
 	//Lights
 	//[false,12] execVM "\z\addons\dayz_code\compile\local_lights_init.sqf";
 	
+        _nul = ["clientradio","zombieenemy"] execVM "dzai_initclient.sqf";
 };
 
 #include "\z\addons\dayz_code\system\REsec.sqf"

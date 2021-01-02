@@ -350,6 +350,14 @@ if (isServer && isNil "sm_done") then {
 		endLoadingScreen;
 	};
 
+        // WAI missions
+        [] ExecVM "\z\addons\dayz_server\WAI\init.sqf";
+        
+        call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\dzai_initserver.sqf";
+        
+        // DZMS missions
+        //[] ExecVM "\z\addons\dayz_server\DZMS\DZMSInit.sqf";
+
 	allowConnection = true;	
 	sm_done = true;
 	publicVariable "sm_done";

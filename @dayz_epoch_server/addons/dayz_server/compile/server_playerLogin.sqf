@@ -42,7 +42,6 @@ diag_log ("LOGIN ATTEMPT: " + str(_playerID) + " " + _playerName);
 #endif
 
 //Do Connection Attempt
-onPlayerConnected "[_id, _name] execVM ""\z\addons\dayz_server\compile\server_setTime.sqf""";
 _doLoop = 0;
 while {_doLoop < 5} do {
         _key = format["CHILD:101:%1:%2:%3:",_playerID,dayZ_instance,_playerName];

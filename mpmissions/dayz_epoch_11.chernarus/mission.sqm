@@ -18,7 +18,11 @@ class Mission
 		"pook_h13",
 		"csj_gyroac",
 		"map_eu",
-		"jetskiyanahuiaddon"
+		"jetskiyanahuiaddon",
+                "warehouse",
+                "mbg_killhouses",
+                "mbg_buildings_3",
+                "mbg_african_buildings"
 	};
 	addOnsAuto[]=
 	{
@@ -1310,8 +1314,8 @@ class Mission
 			age="UNKNOWN";
 			name="zonestary";
 			expCond="(player distance zonestary) < 100;";
-			expActiv="TitleText[""Now entering trader city Stary"",""PLAIN DOWN""]; canbuild = false; inTraderCity = ""Stary"";";
-			expDesactiv="TitleText[""Now leaving trader city Stary"",""PLAIN DOWN""]; canbuild = true; inTraderCity = ""Any"";";
+			expActiv="[""trader city Stary"",true,""enter""] spawn player_traderCity;";
+			expDesactiv="[""trader city Stary"",true,""leave""] spawn player_traderCity;";
 			class Effects
 			{
 			};
@@ -1327,8 +1331,8 @@ class Mission
 			age="UNKNOWN";
 			name="zonebash";
 			expCond="(player distance zonebash) < 100;";
-			expActiv="TitleText[""Now entering trader city Bash"",""PLAIN DOWN""]; canbuild = false; inTraderCity = ""Bash"";";
-			expDesactiv="TitleText[""Now leaving trader city Bash"",""PLAIN DOWN""]; canbuild = true; inTraderCity = ""Any"";";
+			expActiv="[""trader city Bash"",true,""enter""] spawn player_traderCity;";
+			expDesactiv="[""trader city Bash"",true,""leave""] spawn player_traderCity;";
 			class Effects
 			{
 			};
@@ -1344,8 +1348,8 @@ class Mission
 			age="UNKNOWN";
 			name="zoneklen";
 			expCond="(player distance zoneklen) < 100;";
-			expActiv="TitleText[""Now entering trader city Klen"",""PLAIN DOWN""]; canbuild = false; inTraderCity = ""Klen"";";
-			expDesactiv="TitleText[""Now leaving trader city Klen"",""PLAIN DOWN""]; canbuild = true; inTraderCity = ""Any"";";
+			expActiv="[""trader city Klen"",true,""enter""] spawn player_traderCity;";
+			expDesactiv="[""trader city Klen"",true,""leave""] spawn player_traderCity;";
 			class Effects
 			{
 			};
@@ -1361,8 +1365,8 @@ class Mission
 			age="UNKNOWN";
 			name="zonebandit";
 			expCond="(player distance zonebandit) < 100;";
-			expActiv="canbuild = false; inTraderCity = ""Bandit Trader"";";
-			expDesactiv="canbuild = true; inTraderCity = ""Any"";";
+			expActiv="[""Bandit Trader"",false,""enter""] spawn player_traderCity;";
+			expDesactiv="[""Bandit Trader"",false,""leave""] spawn player_traderCity;";
 			class Effects
 			{
 			};
@@ -1378,8 +1382,8 @@ class Mission
 			age="UNKNOWN";
 			name="zonehero";
 			expCond="(player distance zonehero) < 100;";
-			expActiv="canbuild = false; inTraderCity = ""Hero Trader"";";
-			expDesactiv="canbuild = true; inTraderCity = ""Any"";";
+			expActiv="[""Hero Trader"",false,""enter""] spawn player_traderCity;";
+			expDesactiv="[""Hero Trader"",false,""leave""] spawn player_traderCity;";
 			class Effects
 			{
 			};
